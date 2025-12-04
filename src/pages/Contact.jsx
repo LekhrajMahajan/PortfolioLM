@@ -35,22 +35,17 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-24 bg-slate-50 dark:bg-slate-950 relative overflow-hidden">
-      
-      {/* --- ANIMATED BACKGROUND STARTS --- */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-         {/* Top Right "Star" */}
         <motion.div 
           animate={{ x: [-100, 100], opacity: [0, 1, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 right-0 w-48 h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm" 
         />
-        {/* Bottom Left "Star" */}
         <motion.div 
           animate={{ x: [100, -100], opacity: [0, 1, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute bottom-20 left-0 w-64 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent blur-sm" 
         />
-        {/* Large Glowing Orb */}
         <motion.div 
           animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
           transition={{ duration: 4, repeat: Infinity }}

@@ -16,9 +16,7 @@ const Project = () => {
 
   return (
     <section id="projects" className="py-24 bg-white dark:bg-slate-900 relative overflow-hidden">
-      
-      {/* --- ANIMATED BACKGROUND STARTS --- */}
-      {/* Rotating Conic Gradient */}
+      {/* Rotating Gradient */}
       <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] pointer-events-none opacity-20 dark:opacity-10">
         <motion.div
           animate={{ rotate: 360 }}
@@ -69,7 +67,7 @@ const ProjectCard = ({ project }) => {
         hidden: { opacity: 0, y: 50 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
       }}
-      whileHover={{ y: -10 }} // Floats up slightly on hover
+      whileHover={{ y: -10 }} 
       className="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col h-full"
     >
       
@@ -138,9 +136,6 @@ const ProjectCard = ({ project }) => {
   );
 };
 
-// -------------------------------------------------------------
-// Sample Data
-// -------------------------------------------------------------
 const projectsData = [
   {
     title: "TimeLine - Watch Store",

@@ -2,9 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 import Lottie from "lottie-react";
-import { TypeAnimation } from 'react-type-animation'; // <--- Import this
-
-// Make sure this path is correct based on your file structure
+import { TypeAnimation } from 'react-type-animation'; 
+import myResume from '../assets/LekhrajCV.pdf'; 
 import robotAnimation from '../assets/hello animation.json';
 
 const Home = () => {
@@ -131,9 +130,9 @@ const Home = () => {
               Hire Me <ArrowRight size={20} />
             </motion.a>
 
-            <motion.a
-              href="/LekhrajCV.pdf"
-              download
+             <motion.a
+              href={myResume} // 
+              download="Lekhraj_Mahajan_CV.pdf" 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 px-8 py-3 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-full font-semibold hover:shadow-lg transition-all"
