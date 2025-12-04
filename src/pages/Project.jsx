@@ -147,7 +147,7 @@ const projectsData = [
     category: "Frontend",
     description: "Built a responsive e-commerce watch store with add-to-cart, checkout, order placement, and login/signup using React, Tailwind CSS, and Vite.",
     tech: ["React", "Tailwind", "Vite"],
-    image: "https://unsplash.com/photos/watch-at-1034-TJrkkhdB39E",
+    image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1180&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     liveLink: "https://lekhrajmahajan.github.io/TimeLine/",   
     githubLink: "https://github.com/LekhrajMahajan/TimeLine" 
   },
