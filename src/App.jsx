@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import Skill from './pages/Skill';
-import Project from './pages/Project';
-import Contact from './pages/Contact';
+
+// Dynamically import page components using React.lazy
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const Skill = lazy(() => import('./pages/Skill'));
+const Project = lazy(() => import('./pages/Project'));
+const Contact = lazy(() => import('./pages/Contact'));
 
 function App() {
   return (
@@ -14,11 +16,15 @@ function App() {
       <Navbar />
 
       <main className="flex-grow">
-        <Home />
-        <About />
-        <Skill />
-        <Project />
-        <Contact />
+        {/* Wrap the lazy-loaded components in a Suspense component */}
+        {/* The fallback is shown while the component is being loaded */}
+        <Suspense fallback={<div className="flex justify-center items-center py-20">Loading...</div>}>
+          <Home />
+          <About />
+          <Skill />
+          <Project />
+          <Contact />
+        </Suspense>
       </main>
       
       <Footer />
