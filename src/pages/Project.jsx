@@ -137,6 +137,15 @@ const ProjectCard = ({ project }) => {
 };
 
 const projectsData = [
+   {
+    title: "UnityWork",
+    category: "MERN Stack",
+    description: "This is a full‑stack team collaboration and task‑management web app with authentication, dashboards, projects, teams, tasks, and real‑time chat backed by a Node/Express API and MongoDB.",
+    tech: ["MongoDB", "Express", "React", "Node"],
+    image: "https://media.istockphoto.com/id/1489412481/photo/connection-together-puzzle-pieces-on-a-purple-background.jpg?s=612x612&w=0&k=20&c=cDIepXKfHHvhLNy_W28utdv2AH7qIEtHjvD9CsO2QnA=",
+    liveLink: "https://lekhrajmahajan.github.io/UnityWork/",
+    githubLink: "https://github.com/LekhrajMahajan/UnityWork"
+  },
   {
     title: "TimeLine - Watch Store",
     category: "Frontend",
