@@ -1,6 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { ExternalLink, Github, Code2 } from 'lucide-react';
+import trustbuyImg from '../assets/trustbuy.png';
 
 const Project = () => {
   // Container animation
@@ -18,7 +19,7 @@ const Project = () => {
     <section id="projects" className="py-24 bg-white dark:bg-slate-900 relative overflow-hidden">
       {/* Rotating Gradient */}
       <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] pointer-events-none opacity-20 dark:opacity-10">
-        <motion.div
+        <Motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           className="w-full h-full bg-[conic-gradient(from_90deg_at_50%_50%,#E2E8F0_0%,#6366F1_50%,#E2E8F0_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#0F172A_0%,#4338ca_50%,#0F172A_100%)] blur-3xl"
@@ -26,9 +27,9 @@ const Project = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
-        <motion.div 
+        <Motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -40,20 +41,20 @@ const Project = () => {
           <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
             A selection of projects demonstrating my skills in React and UI Design.
           </p>
-        </motion.div>
+        </Motion.div>
 
         {/* Projects Grid */}
-        <motion.div 
+        <Motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {projectsData.map((project, index) => (
             <ProjectCard key={index} project={project} />
           ))}
-        </motion.div>
+        </Motion.div>
 
       </div>
     </section>
@@ -62,21 +63,21 @@ const Project = () => {
 
 const ProjectCard = ({ project }) => {
   return (
-    <motion.div
+    <Motion.div
       variants={{
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+        hidden: { opacity: 0, y: 60, scale: 0.9 },
+        visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
       }}
-      whileHover={{ y: -10 }} 
+      whileHover={{ y: -10 }}
       className="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col h-full"
     >
-      
+
       {/* 1. Card Image Area (with Zoom Effect) */}
       <div className="relative h-48 overflow-hidden">
         <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/0 transition-colors z-10" />
-        <img 
-          src={project.image} 
-          alt={project.title} 
+        <img
+          src={project.image}
+          alt={project.title}
           className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
         />
         {/* Floating Category Badge */}
@@ -92,7 +93,7 @@ const ProjectCard = ({ project }) => {
         <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
           {project.title}
         </h3>
-        
+
         <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4 flex-grow">
           {project.description}
         </p>
@@ -108,39 +109,48 @@ const ProjectCard = ({ project }) => {
 
         {/* 3. Card Footer (Internal Links) */}
         <div className="flex items-center gap-4 pt-4 border-t border-slate-100 dark:border-slate-700 mt-auto">
-          
-          <a 
-            href={project.liveLink} 
-            target="_blank" 
+
+          <a
+            href={project.liveLink}
+            target="_blank"
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg transition-colors group/btn"
           >
-            <ExternalLink size={16} className="group-hover/btn:scale-110 transition-transform" /> 
+            <ExternalLink size={16} className="group-hover/btn:scale-110 transition-transform" />
             Live Demo
           </a>
 
-          <a 
-            href={project.githubLink} 
-            target="_blank" 
+          <a
+            href={project.githubLink}
+            target="_blank"
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white dark:bg-slate-700 text-slate-700 dark:text-white border border-slate-200 dark:border-slate-600 hover:border-indigo-500 dark:hover:border-indigo-500 text-sm font-semibold rounded-lg transition-all"
           >
-            <Github size={16} /> 
+            <Github size={16} />
             Source
           </a>
 
         </div>
       </div>
 
-    </motion.div>
+    </Motion.div>
   );
 };
 
 const projectsData = [
-   {
+  {
+    title: "TrustBuy",
+    category: "MERN Stack",
+    description: "TrustBuy is a data-driven e-commerce platform designed to improve transparency in online shopping by combining real-time dynamic pricing with a seller trust score system to promote fair trade and reliable sellers.",
+    tech: ["MongoDB", "Express", "React", "Node"],
+    image: trustbuyImg,
+    liveLink: "https://trust-buy-two.vercel.app/",
+    githubLink: "https://github.com/LekhrajMahajan/TrustBuy"
+  },
+  {
     title: "UnityWork",
     category: "MERN Stack",
-    description: "This is a full‑stack team collaboration and task‑management web app with authentication, dashboards, projects, teams, tasks, and real‑time chat backed by a Node/Express API and MongoDB.",
+    description: "This is a full stack team collaboration and task management web app with authentication, dashboards, projects, teams, tasks, and real‑time chat backed by a Node/Express API and MongoDB.",
     tech: ["MongoDB", "Express", "React", "Node"],
     image: "https://media.istockphoto.com/id/1489412481/photo/connection-together-puzzle-pieces-on-a-purple-background.jpg?s=612x612&w=0&k=20&c=cDIepXKfHHvhLNy_W28utdv2AH7qIEtHjvD9CsO2QnA=",
     liveLink: "https://lekhrajmahajan.github.io/UnityWork/",
@@ -152,8 +162,8 @@ const projectsData = [
     description: "Built a responsive e-commerce watch store with add-to-cart, checkout, order placement, and login/signup using React, Tailwind CSS, and Vite.",
     tech: ["React", "Tailwind", "Vite"],
     image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1180&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    liveLink: "https://lekhrajmahajan.github.io/TimeLine/",   
-    githubLink: "https://github.com/LekhrajMahajan/TimeLine" 
+    liveLink: "https://lekhrajmahajan.github.io/TimeLine/",
+    githubLink: "https://github.com/LekhrajMahajan/TimeLine"
   },
   {
     title: "Condrinks",
@@ -173,7 +183,7 @@ const projectsData = [
     liveLink: "https://lekhrajmahajan.github.io/Construction/",
     githubLink: "https://github.com/LekhrajMahajan/Construction"
   }
-  
+
 ];
 
 export default Project;

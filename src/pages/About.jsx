@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { GraduationCap, Code, Palette, Coffee, ArrowRight } from 'lucide-react';
 
 const About = () => {
@@ -15,13 +15,13 @@ const About = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
   };
 
   return (
     <section id="about" className="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
-      <motion.div
+      <Motion.div
         animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         className="absolute inset-0 pointer-events-none opacity-30 dark:opacity-20"
@@ -36,7 +36,7 @@ const About = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header Section */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -45,37 +45,37 @@ const About = () => {
           <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
             About <span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">Me</span>
           </h2>
-          <motion.div
+          <Motion.div
             initial={{ width: 0 }}
             whileInView={{ width: 100 }}
             viewport={{ once: true }}
             className="h-1 bg-indigo-500 mx-auto rounded-full"
           />
-        </motion.div>
+        </Motion.div>
 
         {/* Main Text Content */}
-        <motion.div 
+        <Motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <motion.p variants={itemVariants} className="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+          <Motion.p variants={itemVariants} className="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
             Hello! I'm a passionate <span className="font-bold text-indigo-600 dark:text-indigo-400">Computer Engineering Graduate</span> looking to kickstart my career as a Full Stack Developer.
-          </motion.p>
-          
-          <motion.p variants={itemVariants} className="text-base text-slate-500 dark:text-slate-400 leading-relaxed">
+          </Motion.p>
+
+          <Motion.p variants={itemVariants} className="text-base text-slate-500 dark:text-slate-400 leading-relaxed">
             While I may be fresh to the industry, I have spent the last few years bridging the gap between theory and practice. <span className="text-slate-900 dark:text-white font-medium">I don't just write code; I build solutions.</span> I am eager to learn, adaptable to new technologies, and ready to contribute to a real-world team from day one.
-          </motion.p>
-        </motion.div>
+          </Motion.p>
+        </Motion.div>
 
         {/* The "Fresher Highlights" Grid */}
-        <motion.div
+        <Motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
 
@@ -107,10 +107,10 @@ const About = () => {
             desc="The tech world moves fast, and so do I. I am currently learning Node.js."
           />
 
-        </motion.div>
+        </Motion.div>
 
         {/* Bottom CTA */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
@@ -123,7 +123,7 @@ const About = () => {
             Check out my projects
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </a>
-        </motion.div>
+        </Motion.div>
 
       </div>
     </section>
@@ -133,7 +133,7 @@ const About = () => {
 // Reusable Card Component with Hover Effect
 const HighlightCard = ({ icon, title, desc }) => {
   return (
-    <motion.div
+    <Motion.div
       variants={{
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 }
@@ -150,7 +150,7 @@ const HighlightCard = ({ icon, title, desc }) => {
       <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
         {desc}
       </p>
-    </motion.div>
+    </Motion.div>
   );
 };
 

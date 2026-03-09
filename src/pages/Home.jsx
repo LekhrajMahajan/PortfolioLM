@@ -1,9 +1,9 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 import Lottie from "lottie-react";
-import { TypeAnimation } from 'react-type-animation'; 
-import myResume from '../assets/LekhrajCV.pdf'; 
+import { TypeAnimation } from 'react-type-animation';
+import myResume from '../assets/LekhrajCV.pdf';
 import robotAnimation from '../assets/hello animation.json';
 
 const Home = () => {
@@ -30,7 +30,7 @@ const Home = () => {
     >
       {/* --- BACKGROUND ANIMATION --- */}
       <div className="absolute inset-0 w-full h-full pointer-events-none">
-        <motion.div
+        <Motion.div
           animate={{
             x: [0, 100, 0],
             y: [0, -50, 0],
@@ -43,7 +43,7 @@ const Home = () => {
           }}
           className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-purple-500/30 rounded-full blur-[100px]"
         />
-        <motion.div
+        <Motion.div
           animate={{
             x: [0, -100, 0],
             y: [0, 50, 0],
@@ -56,7 +56,7 @@ const Home = () => {
           }}
           className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-indigo-500/30 rounded-full blur-[100px]"
         />
-        <motion.div
+        <Motion.div
           animate={{ opacity: [0.2, 0.4, 0.2] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px]"
@@ -66,21 +66,21 @@ const Home = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center z-10 relative">
 
         {/* --- Left Column: Text Content --- */}
-        <motion.div
+        <Motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="text-left"
         >
           {/* Badge */}
-          <motion.div variants={itemVariants} className="inline-block">
+          <Motion.div variants={itemVariants} className="inline-block">
             <span className="py-2 px-4 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-300 text-sm font-semibold tracking-wide border border-indigo-200 dark:border-indigo-800">
               👋 Welcome to my portfolio
             </span>
-          </motion.div>
+          </Motion.div>
 
           {/* Headline with Typewriter Effect */}
-          <motion.h1
+          <Motion.h1
             variants={itemVariants}
             className="mt-6 text-5xl md:text-7xl font-bold text-slate-900 dark:text-white leading-tight"
           >
@@ -102,48 +102,48 @@ const Home = () => {
               />
               {/* TypeAnimation Component End */}
             </span>
-          </motion.h1>
+          </Motion.h1>
 
-          <motion.h2
+          <Motion.h2
             variants={itemVariants}
             className="mt-4 text-2xl md:text-3xl font-medium text-slate-600 dark:text-slate-300"
           >
             I build <span className="text-indigo-500 font-bold">Scalable Web Applications</span>
-          </motion.h2>
+          </Motion.h2>
 
           {/* Description */}
-          <motion.p
+          <Motion.p
             variants={itemVariants}
             className="mt-6 text-lg text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed"
           >
             A passionate Frontend Developer crafting seamless web experiences. I bridge the gap between design and engineering using <span className="text-slate-900 dark:text-white font-semibold">React and Tailwind</span>. Ready to solve real-world problems with clean, modern code.
-          </motion.p>
+          </Motion.p>
 
           {/* Buttons */}
-          <motion.div variants={itemVariants} className="mt-8 flex flex-wrap gap-4">
-            <motion.a
+          <Motion.div variants={itemVariants} className="mt-8 flex flex-wrap gap-4">
+            <Motion.a
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 px-8 py-3 bg-indigo-600 text-white rounded-full font-semibold shadow-lg shadow-indigo-500/30 hover:bg-indigo-700 transition-all"
             >
               Hire Me <ArrowRight size={20} />
-            </motion.a>
+            </Motion.a>
 
-             <motion.a
+            <Motion.a
               href={myResume} // 
-              download="Lekhraj_Mahajan_CV.pdf" 
+              download="Lekhraj_Mahajan_CV.pdf"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 px-8 py-3 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-full font-semibold hover:shadow-lg transition-all"
             >
               Download CV <Download size={20} />
-            </motion.a>
-          </motion.div>
-        </motion.div>
+            </Motion.a>
+          </Motion.div>
+        </Motion.div>
 
         {/* --- Right Column: Animated Robot --- */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
@@ -151,7 +151,7 @@ const Home = () => {
           className="relative hidden md:flex h-full items-center justify-center"
         >
           {/* Lottie Player Container with floating animation */}
-          <motion.div
+          <Motion.div
             animate={{ y: [0, -25, 0] }}
             transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
             className="w-full max-w-lg drop-shadow-2xl relative z-20"
@@ -161,7 +161,7 @@ const Home = () => {
               loop={true}
               className="w-full h-auto"
             />
-          </motion.div>
+          </Motion.div>
 
           {/* Floating Skill Badges */}
           <FloatingBadge
@@ -176,7 +176,7 @@ const Home = () => {
             position="-bottom-10 right-0"
             delay={1}
           />
-        </motion.div>
+        </Motion.div>
 
       </div>
     </section>
@@ -189,14 +189,14 @@ const Home = () => {
 
 const FloatingBadge = ({ text, color, position, delay }) => {
   return (
-    <motion.div
+    <Motion.div
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 1 + delay * 0.2, type: "spring" }}
       className={`absolute ${position} px-4 py-2 rounded-xl shadow-lg font-semibold text-sm backdrop-blur-sm z-30 flex items-center gap-2 ${color}`}
     >
       {text}
-    </motion.div>
+    </Motion.div>
   );
 };
 

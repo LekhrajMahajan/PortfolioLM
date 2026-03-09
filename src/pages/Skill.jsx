@@ -1,5 +1,22 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
+
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.8, y: 30 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  },
+};
+
+// Static random background particles
+const particles = [...Array(10)].map((_, i) => ({
+  x: (i * 11) % 100 + "vw",
+  duration: 10 + (i * 1.5) % 10,
+  delay: (i * 0.5) % 5
+}));
 
 const Skill = () => {
   // Animation Variants
@@ -8,14 +25,9 @@ const Skill = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1, // Faster stagger for skills
+        staggerChildren: 0.15,
       },
     },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
   };
 
   return (
@@ -23,24 +35,27 @@ const Skill = () => {
 
       {/* --- ANIMATED BACKGROUND STARTS --- */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(10)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ y: "100vh", opacity: 0, x: Math.random() * 100 + "vw" }}
-            animate={{ y: "-10vh", opacity: [0, 1, 0], rotate: 360 }}
-            transition={{
-              duration: Math.random() * 10 + 10, // Random speed between 10s-20s
-              repeat: Infinity,
-              delay: Math.random() * 5
-            }}
-            className="absolute w-8 h-8 bg-indigo-500/10 dark:bg-indigo-400/10 rounded-lg backdrop-blur-sm"
-          />
-        ))}
+        {/* --- ANIMATED BACKGROUND STARTS --- */}
+        <div className="absolute inset-0 pointer-events-none">
+          {particles.map((p, i) => (
+            <Motion.div
+              key={i}
+              initial={{ y: "100vh", opacity: 0, x: p.x }}
+              animate={{ y: "-10vh", opacity: [0, 1, 0], rotate: 360 }}
+              transition={{
+                duration: p.duration,
+                repeat: Infinity,
+                delay: p.delay
+              }}
+              className="absolute w-8 h-8 bg-indigo-500/10 dark:bg-indigo-400/10 rounded-lg backdrop-blur-sm"
+            />
+          ))}
+        </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -52,20 +67,20 @@ const Skill = () => {
           <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
             These are the tools and technologies I use to build scalable, responsive, and performant web applications.
           </p>
-        </motion.div>
+        </Motion.div>
 
         {/* Skills Grid */}
-        <motion.div
+        <Motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
         >
           {skillsData.map((skill, index) => (
             <SkillCard key={index} skill={skill} />
           ))}
-        </motion.div>
+        </Motion.div>
 
       </div>
     </section>
@@ -75,12 +90,9 @@ const Skill = () => {
 // Individual Skill Card Component
 const SkillCard = ({ skill }) => {
   return (
-    <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 }
-      }}
-      whileHover={{ y: -5 }}
+    <Motion.div
+      variants={itemVariants}
+      whileHover={{ y: -5, scale: 1.02 }}
       className="group relative bg-white dark:bg-slate-900 rounded-xl p-6 flex flex-col items-center justify-center border border-slate-200 dark:border-slate-800 transition-all duration-300 hover:shadow-xl"
     >
       {/* Dynamic Hover Border/Glow - Uses the 'color' prop for specific brand glow */}
@@ -106,7 +118,7 @@ const SkillCard = ({ skill }) => {
       <h3 className="text-lg font-bold text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors relative z-10">
         {skill.name}
       </h3>
-    </motion.div>
+    </Motion.div>
   );
 };
 

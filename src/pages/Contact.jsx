@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { Mail, MapPin, Phone, Send, Loader2 } from 'lucide-react';
 
 const Contact = () => {
@@ -36,17 +36,17 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 bg-slate-50 dark:bg-slate-950 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div 
+        <Motion.div
           animate={{ x: [-100, 100], opacity: [0, 1, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 right-0 w-48 h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm" 
+          className="absolute top-20 right-0 w-48 h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm"
         />
-        <motion.div 
+        <Motion.div
           animate={{ x: [100, -100], opacity: [0, 1, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-20 left-0 w-64 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent blur-sm" 
+          className="absolute bottom-20 left-0 w-64 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent blur-sm"
         />
-        <motion.div 
+        <Motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
           transition={{ duration: 4, repeat: Infinity }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/20 rounded-full blur-[100px]"
@@ -54,12 +54,12 @@ const Contact = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
-        <motion.div 
+        <Motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
@@ -68,16 +68,16 @@ const Contact = () => {
           <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
             Have a project in mind or just want to say hi? I'm always open to discussing new opportunities.
           </p>
-        </motion.div>
+        </Motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-          
+
           {/* LEFT COLUMN: Contact Info */}
-          <motion.div 
+          <Motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-8"
           >
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
@@ -89,37 +89,37 @@ const Contact = () => {
 
             {/* Info Cards */}
             <div className="space-y-6">
-              <ContactInfoCard 
-                icon={<Mail className="w-6 h-6" />} 
-                title="Email" 
+              <ContactInfoCard
+                icon={<Mail className="w-6 h-6" />}
+                title="Email"
                 value="lekhrajmahajan506@gmail.com"
                 href="mailto:lekhrajmahajan506@gmail.com"
               />
-              <ContactInfoCard 
-                icon={<Phone className="w-6 h-6" />} 
-                title="Phone" 
+              <ContactInfoCard
+                icon={<Phone className="w-6 h-6" />}
+                title="Phone"
                 value="+91 63542 45706"
                 href="tel:+916354245706"
               />
-              <ContactInfoCard 
-                icon={<MapPin className="w-6 h-6" />} 
-                title="Location" 
+              <ContactInfoCard
+                icon={<MapPin className="w-6 h-6" />}
+                title="Location"
                 value="Ahmedabad, India"
                 href="#"
               />
             </div>
-          </motion.div>
+          </Motion.div>
 
           {/* RIGHT COLUMN: The Form */}
-          <motion.div 
+          <Motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl p-8 border border-slate-100 dark:border-slate-800"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
-              
+
               {/* Name Input */}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
@@ -172,16 +172,15 @@ const Contact = () => {
               </div>
 
               {/* Submit Button */}
-              <motion.button
+              <Motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full py-4 rounded-lg font-bold text-white flex items-center justify-center gap-2 transition-all duration-300 ${
-                  isSubmitted 
-                    ? "bg-green-500 hover:bg-green-600" 
-                    : "bg-indigo-600 hover:bg-indigo-700"
-                }`}
+                className={`w-full py-4 rounded-lg font-bold text-white flex items-center justify-center gap-2 transition-all duration-300 ${isSubmitted
+                  ? "bg-green-500 hover:bg-green-600"
+                  : "bg-indigo-600 hover:bg-indigo-700"
+                  }`}
               >
                 {isSubmitting ? (
                   <>
@@ -196,10 +195,10 @@ const Contact = () => {
                     Send Message <Send size={20} />
                   </>
                 )}
-              </motion.button>
+              </Motion.button>
 
             </form>
-          </motion.div>
+          </Motion.div>
 
         </div>
       </div>
@@ -210,7 +209,7 @@ const Contact = () => {
 // Helper Component for Info Cards
 const ContactInfoCard = ({ icon, title, value, href }) => {
   return (
-    <a 
+    <a
       href={href}
       className="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md transition-all hover:border-indigo-500 group"
     >
